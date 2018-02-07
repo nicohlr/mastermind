@@ -17,7 +17,8 @@ class GameOfMastermind:
                 break
         return response
 
-    def play(self):
+    @property
+    def _play(self):
         """this method allows you to play a game of mastermind"""
         i = 0
         try_return = [0, 0]
@@ -47,8 +48,10 @@ class GameOfMastermind:
             for p in range(0, 4):
                 for s in range(0, 4):
                     if not GameOfMastermind.belong(p, avoid):
-                            if player_try[s] == self.good_ans[p] and not GameOfMastermind.belong(player_try[s],
-                                                                                                 already_checked):
+                            if player_try[s] == self.good_ans[p] and not GameOfMastermind.belong(
+                                                                                                player_try[s],
+                                                                                                already_checked
+                                                                                                ):
                                 try_return[0] += 1
                                 duplicate += [player_try[s]]
                                 if duplicate.count(player_try[s]) > 1:
@@ -65,4 +68,3 @@ class GameOfMastermind:
                 # before asking for another attempt.
                 try_return = [0, 0]
             time.sleep(7)
-

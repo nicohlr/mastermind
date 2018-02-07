@@ -1,3 +1,8 @@
+# !/usr/bin/python3.5
+# -*- coding: utf-8 -*-
+# @author: Nicolas Houlier
+
+
 import time
 
 
@@ -9,7 +14,7 @@ class GameOfMastermind:
     @classmethod
     def belong(cls, n, tab):
         """this method makes it possible to find if an element n
-        belongs to an array T, it will be used in the play method"""
+        belongs to an array tab, it will be used in the play method"""
         response = False
         for i in tab:
             if n == i:

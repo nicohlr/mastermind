@@ -11,10 +11,16 @@ class GameOfMastermind:
     def __init__(self, good_ans):
         self.good_ans = good_ans
 
-    @classmethod
-    def belong(cls, n, tab):
-        """this method makes it possible to find if an element n
+    @staticmethod
+    def belong(n, tab):
+        """
+        Args:
+            n (int): element to be finded in the array
+            tab (list): array
+
+        This method makes it possible to find if an element n
         belongs to an array tab, it will be used in the play method"""
+
         response = False
         for i in tab:
             if n == i:
@@ -22,9 +28,11 @@ class GameOfMastermind:
                 break
         return response
 
-    @property
-    def _play(self):
-        """this method allows you to play a game of mastermind"""
+    def play(self):
+        """
+        This method allows you to play a game of mastermind
+        """
+        
         i = 0
         try_return = [0, 0]
 

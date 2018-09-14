@@ -6,6 +6,7 @@ import random
 import ipywidgets as wd
 from IPython.display import display
 from notebook_toggle_code import ToggleCode
+import os
 
 
 class MastermindNotebook:
@@ -13,7 +14,7 @@ class MastermindNotebook:
     Play a game of mastermind directly into a jupyter notebook !
     """
 
-    def __init__(self, answer: list=None):
+    def __init__(self, answer: list = None):
         """
         This constructor will display the gui of the mastermid game
 
@@ -35,20 +36,25 @@ class MastermindNotebook:
             mystery.icon = 'question'
             mystery.style.button_color = '#4B4A4E'
             answer_colors_list.append(mystery)
-            
+
             arrow = wd.Button(disabled=True)
             arrow.icon = 'arrow-up'
             arrow.style.button_color = 'white'
             arrows_list.append(arrow)
 
+        path_logo = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), 'img/logo_notebook.png')
+        answer_colors_list.append(wd.Image(value=open(path_logo, 'rb').read(), layout={
+                                  'width': '197px', 'height': '69px', 'margin': '0px 0px 0px 70px'}))
 
-        self.answer_box = wd.HBox(answer_colors_list, layout={'margin':'20px 0px 0px 0px'})
+        self.answer_box = wd.HBox(answer_colors_list, layout={
+                                  'margin': '20px 0px 0px 0px'})
 
         self.arrows_box = wd.HBox(arrows_list)
 
         self.trials = wd.VBox([self.answer_box, self.arrows_box])
         self.selectors = wd.HBox()
-        self.user_interact = wd.HBox(layout={'margin':'20px 0px 20px 0px'})
+        self.user_interact = wd.HBox(layout={'margin': '20px 0px 20px 0px'})
         self.console = wd.HBox()
         self.game_container = wd.VBox(
             [self.trials, self.user_interact, self.console])
@@ -61,7 +67,7 @@ class MastermindNotebook:
         self.confirm_button.icon = 'check'
 
         self.new_game_button = wd.Button(description='New game', layout={
-                                         'margin': '0px 0px 0px 20px'})  
+                                         'margin': '0px 0px 0px 20px'})
         self.new_game_button.icon = 'refresh'
 
         self.new_game_button.on_click(self.new_game_function())
@@ -193,7 +199,8 @@ class MastermindNotebook:
                 info = wd.Button(description='Turn {0} - Well placed: {1} \n - Misplaced: {2}'.format(self.turn,
                                                                                                       self.try_return['well_placed'], self.try_return['misplaced']),
                                  disabled=True,
-                                 layout={'width': 'auto', 'margin': '0px 0px 0px 50px'}
+                                 layout={'width': 'auto',
+                                         'margin': '0px 0px 0px 50px'}
                                  )
 
                 info.icon = 'hashtag'
@@ -205,7 +212,7 @@ class MastermindNotebook:
 
                     self.console.children = [
                         wd.Label(value='You won !'), self.new_game_button]
-                    
+
                     self.display_correct_answer(failed=False)
 
                     for selector in self.selectors.children:
@@ -241,17 +248,17 @@ class MastermindNotebook:
 
         return create_combination_and_rate
 
-    def display_correct_answer(self, failed: bool=True):
+    def display_correct_answer(self, failed: bool = True):
 
         new_answer_widgets = list()
 
         for position, _ in enumerate(self.answer_box.children):
-            revealed = wd.Button(disabled=True, button_style=self.mapping_colors[self.answer[position]])
+            revealed = wd.Button(
+                disabled=True, button_style=self.mapping_colors[self.answer[position]])
             if failed:
                 revealed.icon = 'close'
-            else:   
+            else:
                 revealed.icon = 'check-square-o'
             new_answer_widgets.append(revealed)
 
         self.answer_box.children = new_answer_widgets
-        

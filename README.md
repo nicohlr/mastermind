@@ -1,6 +1,6 @@
 <img src="./img/logo.png" width="35%" />
 
-This package allows to play some mastermind games in a jupyter notebook
+This package allows you to play Mastermind
 
 ## Install
 

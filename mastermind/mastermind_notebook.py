@@ -44,15 +44,15 @@ class MastermindNotebook:
 
         path_logo = os.path.join(os.path.dirname(os.path.dirname(
             os.path.abspath(__file__))), 'img/logo_notebook.png')
-        answer_colors_list.append(wd.Image(value=open(path_logo, 'rb').read(), layout={
-                                  'width': '197px', 'height': '69px', 'margin': '0px 0px 0px 70px'}))
+        self.logo_widget = wd.Image(value=open(path_logo, 'rb').read(), layout={
+                                  'width': '197px', 'height': '69px', 'margin': '0px 0px 0px 70px'})
 
         self.answer_box = wd.HBox(answer_colors_list, layout={
                                   'margin': '20px 0px 0px 0px'})
 
         self.arrows_box = wd.HBox(arrows_list)
 
-        self.trials = wd.VBox([self.answer_box, self.arrows_box])
+        self.trials = wd.VBox([wd.HBox([wd.VBox([self.answer_box, self.arrows_box]), self.logo_widget], layout={'margin': '0px 0px 20px 0px'})], layout={'margin': '20px 0px 0px 0px'})
         self.selectors = wd.HBox()
         self.user_interact = wd.HBox(layout={'margin': '20px 0px 20px 0px'})
         self.console = wd.HBox()
@@ -144,7 +144,8 @@ class MastermindNotebook:
         def new_game(_):
 
             self.console.children = []
-            self.trials.children = [self.answer_box, self.arrows_box]
+
+            self.trials.children = [wd.HBox([wd.VBox([self.answer_box, self.arrows_box]), self.logo_widget], layout={'margin': '0px 0px 20px 0px'})]
             self.turn = 0
             for selector in self.selectors.children:
                 selector.disabled = False
@@ -242,7 +243,7 @@ class MastermindNotebook:
             selection.children = selection_widgets
 
             trials_children = list(self.trials.children)
-            trials_children.insert(2, selection)
+            trials_children.insert(1, selection)
 
             self.trials.children = trials_children
 

@@ -1,4 +1,4 @@
-# mastermind
+<img src="./img/logo.png" width="256" height="112" />
 
 This package allows to play some mastermind games in a jupyter notebook
 

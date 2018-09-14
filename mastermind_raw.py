@@ -6,7 +6,7 @@
 import time
 
 
-class GameOfMastermind:
+class Mastermind:
 
     def __init__(self, good_ans):
         self.good_ans = good_ans

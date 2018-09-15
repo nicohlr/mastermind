@@ -5,7 +5,7 @@ with io.open('README.md', encoding='utf_8') as fp:
     readme = fp.read()
 
 setup(name='mastermind',
-      version='0.2',
+      version='0.3',
       long_description=readme,
       long_description_content_type='text/markdown; charset=UTF-8',
       classifiers=[
@@ -20,6 +20,6 @@ setup(name='mastermind',
       license='MIT',
       install_requires=['ipywidgets>=7.4', 'notebook_toggle_code'],
       packages=['mastermind'],
-      package_data={'img': ['*.png'], 'notebooks': ['*.ipynb']},
+      package_data={'': ['*.png', '*.ipynb']},
       include_package_data=True,
       zip_safe=False)

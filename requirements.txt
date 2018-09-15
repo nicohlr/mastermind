@@ -1,2 +1,2 @@
-ipywidgets
+ipywidgets>=7.4
 notebook_toggle_code

@@ -1,3 +1,4 @@
 include README.md
-include ./img/*.png
-include ./notebooks/*.ipynb
+include img/*.png
+include notebooks/*.ipynb
+include mastermind/*.py

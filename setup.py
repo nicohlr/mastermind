@@ -5,7 +5,7 @@ with io.open('README.md', encoding='utf_8') as fp:
     readme = fp.read()
 
 setup(name='mastermind',
-      version='0.3',
+      version='0.4',
       long_description=readme,
       long_description_content_type='text/markdown; charset=UTF-8',
       classifiers=[
@@ -14,7 +14,7 @@ setup(name='mastermind',
       ],
       description='Play mastermind with python !',
       keywords='mastermind notebook ipywidgets game',
-      url='https://github.com/NicolasHoulier/mastermind.git',
+      url='https://github.com/nhoulier/mastermind.git',
       author='Nicolas Houlier',
       author_email='nicolas.houlier@imt-atlantique.net',
       license='MIT',

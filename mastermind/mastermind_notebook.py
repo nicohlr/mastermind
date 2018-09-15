@@ -42,8 +42,7 @@ class MastermindNotebook:
             arrow.style.button_color = 'white'
             arrows_list.append(arrow)
 
-        path_logo = os.path.join(os.path.dirname(os.path.dirname(
-            os.path.abspath(__file__))), 'img/logo_notebook.png')
+        path_logo = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img/logo_notebook.png')
         self.logo_widget = wd.Image(value=open(path_logo, 'rb').read(), layout={
             'width': '197px', 'height': '69px', 'margin': '0px 0px 0px 70px'})
 

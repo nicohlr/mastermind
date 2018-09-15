@@ -5,7 +5,7 @@ with io.open('README.md', encoding='utf_8') as fp:
     readme = fp.read()
 
 setup(name='mastermind',
-      version='0.1',
+      version='0.2',
       long_description=readme,
       long_description_content_type='text/markdown; charset=UTF-8',
       classifiers=[

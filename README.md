@@ -1,6 +1,6 @@
 <img src="./mastermind/img/logo.png" width="35%" />
 
-This package allows you to play Mastermind
+This package allows you to play Mastermind directly into a jupyter notebook/lab IDE. It has been made using the great [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) python library.
 
 ## Install
 
@@ -16,6 +16,14 @@ Copy and paste the following lines into a cell of a notebook and run it:
 The game should display, you can start playing by choosing one color for each position and click on "Confirm combination" button !
 
 ![GitHub Logo](mastermind/img/game_capture.png)
+
+## How to use in jupyter lab
+
+To use in jupyter lab, don't forget to install the jupyter widget extension:
+
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+Once this is done, you can proceed in the same way as for the jupyter notebook use.
 
 ## State of development
 

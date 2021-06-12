@@ -42,16 +42,12 @@ class MastermindNotebook:
             arrow.style.button_color = 'white'
             arrows_list.append(arrow)
 
-        path_logo = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img/logo_notebook.png')
-        self.logo_widget = wd.Image(value=open(path_logo, 'rb').read(), layout={
-            'width': '197px', 'height': '69px', 'margin': '0px 0px 0px 70px'})
-
         self.answer_box = wd.HBox(answer_colors_list, layout={
                                   'margin': '20px 0px 0px 0px'})
 
         self.arrows_box = wd.HBox(arrows_list)
 
-        self.trials = wd.VBox([wd.HBox([wd.VBox([self.answer_box, self.arrows_box]), self.logo_widget], layout={
+        self.trials = wd.VBox([wd.HBox([wd.VBox([self.answer_box, self.arrows_box])], layout={
                               'margin': '0px 0px 20px 0px'})], layout={'margin': '20px 0px 0px 0px'})
         self.selectors = wd.HBox()
         self.user_interact = wd.HBox(layout={'margin': '20px 0px 20px 0px'})
@@ -148,7 +144,7 @@ class MastermindNotebook:
             self.answer = [random.randint(1, 4) for j in range(4)]
 
             self.trials.children = [wd.HBox([wd.VBox(
-                [self.answer_box, self.arrows_box]), self.logo_widget], layout={'margin': '0px 0px 20px 0px'})]
+                [self.answer_box, self.arrows_box])], layout={'margin': '0px 0px 20px 0px'})]
             self.turn = 0
             for selector in self.selectors.children:
                 selector.disabled = False
